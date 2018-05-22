@@ -10,8 +10,10 @@
             <label for="CategoryID" class="col-sm-2 col-form-label col-form-label-lg">商品分類</label>
             <div class="col-sm-10">
               <select class="form-control form-control-lg" name="CategoryID" id="CategoryID">
-                    <option value="0">請選擇</option>
-                
+                  <option value="0">請選擇</option>
+                  {% for category in datas%} 
+                  <option value={{category.0}}>{{category.1}}</option>
+                  {% endfor %}
               </select> 
             </div>
           </div>

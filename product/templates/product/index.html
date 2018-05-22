@@ -3,4 +3,28 @@
     
     {% block content %}
     <h2>Product Index</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="row">
+                <th class="col-1">#</th>
+                <th class="col-2">商品型號</th>
+                <th class="col-5">商品名稱</th>
+                <th class="col-2">商品價格</th>
+                <th class="col-2">商品圖片</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in datas %}
+            <tr class="row">
+                <td class="col-1">{{product.0}}</td>
+                <td class="col-2">{{product.2}}</td>
+                <td class="col-5">{{product.3}}</td>
+                <td class="col-2">{{product.4}}</td>
+                <td class="col-2">
+                    <img src="/media/{{product.5}}" class="img-thumbnail" />
+                    </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endblock %}
