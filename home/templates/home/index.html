@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+        <h2>這是{{title}}</h2>
+        <p>{{name}} 您好</p>
+        <h2>現在時間：{{now | date:'Y/m/d '}}</h2>
+        <hr>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users|dictsortreversed:'age' %}
+                {% if user.age > 35 %}
+                <tr style="background-color:yellow">
+                    <td>{{user.name}}</td>                   
+                    <td>{{user.age}}</td>
+                    <td>{{user.email}}</td>
+                </tr>
+                {% else %}
+                   <tr style="background-color:orange">
+                        <td>{{user.name}}</td>                   
+                        <td>{{user.age}}</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                {% endif %}
+
+                {% endfor %}           
+            </tbody>
+        </table>
+{% endblock %}
+
