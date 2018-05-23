@@ -3,14 +3,16 @@
     
     {% block content %}
     <h2>Product Index</h2>
+    <a href="{% url 'product:create' %}" class="btn btn-primary">商品新增</a>
     <table class="table table-bordered">
         <thead>
             <tr class="row">
                 <th class="col-1">#</th>
                 <th class="col-2">商品型號</th>
-                <th class="col-5">商品名稱</th>
+                <th class="col-3">商品名稱</th>
                 <th class="col-2">商品價格</th>
                 <th class="col-2">商品圖片</th>
+                <th class="col-2">商品管理</th>
             </tr>
         </thead>
         <tbody>
@@ -18,11 +20,15 @@
             <tr class="row">
                 <td class="col-1">{{product.0}}</td>
                 <td class="col-2">{{product.2}}</td>
-                <td class="col-5">{{product.3}}</td>
+                <td class="col-3">{{product.3}}</td>
                 <td class="col-2">{{product.4}}</td>
                 <td class="col-2">
-                    <img src="/media/{{product.5}}" class="img-thumbnail" />
-                    </td>
+                    <img src="/media/{{product.5}}" class="img-thumbnail img-fluid" />
+                 </td>
+                 <td class="col-2">
+                     <a href="{% url 'product:delete' product.0  %}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                     <a href="{% url 'product:update' product.0  %}" class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a>
+                 </td>
             </tr>
             {% endfor %}
         </tbody>

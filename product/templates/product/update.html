@@ -3,4 +3,59 @@
 
 {% block content %}
 <h2>Product Update</h2>
+<hr />
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group row">
+            <label for="CategoryID" class="col-sm-2 col-form-label col-form-label-lg">商品分類</label>
+            <div class="col-sm-10">
+              <select class="form-control form-control-lg" name="CategoryID" id="CategoryID">
+                  <option value="0">請選擇</option>
+                  {% for category in datas%} 
+                  {% if data.1 == category.0 %}
+                    <option value={{category.0}} selected>{{category.1}}</option>
+                  {% else %}
+                    <option value={{category.0}}>{{category.1}}</option>
+                  {% endif %}
+                    {% endfor %}
+              </select> 
+            </div>
+          </div>
+  <div class="form-group row">
+    <label for="ModelNumber" class="col-sm-2 col-form-label col-form-label-lg">商品型號</label>
+    <div class="col-sm-10">
+        <input type="hidden" name="ProductID" value="{{data.0}}" />
+      <input type="text" value="{{data.2}}" class="form-control form-control-lg" name="ModelNumber" id="ModelNumber" placeholder="請輸入商品型號">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="ModelName" class="col-sm-2 col-form-label col-form-label-lg">商品名稱</label>
+    <div class="col-sm-10">
+      <input type="text" value="{{data.3}}" class="form-control form-control-lg" name="ModelName" id="ModelName" placeholder="請輸入商品名稱">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="UnitCost" class="col-sm-2 col-form-label col-form-label-lg">商品價格</label>
+    <div class="col-sm-10">
+      <input type="number" value="{{data.4}}" class="form-control form-control-lg" name="UnitCost" id="UnitCost" placeholder="請輸入商品價格">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="ProductImage" class="col-sm-2 col-form-label col-form-label-lg">商品圖片</label>
+    <div class="col-sm-10">
+      <input type="file" class="form-control form-control-lg" name="ProductImage" id="ProductImage" placeholder="請輸入商品價格">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Description" class="col-sm-2 col-form-label col-form-label-lg">商品描述</label>
+    <div class="col-sm-10">
+      <textarea class="form-control form-control-lg" name="Description" id="Description">{{data.6}}</textarea>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i> 修改</button>
+    </div>
+  </div>
+</form>
 {% endblock %}

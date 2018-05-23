@@ -25,7 +25,7 @@ urlpatterns = [
     #http://localhost:8000
     path('',include('home.urls')),
     #http://localhost:8000/members
-    path('members/',include('members.urls')),
+    path('member/',include('member.urls')),
     #http://localhost:8000/product
     path('product/',include('product.urls'))
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
